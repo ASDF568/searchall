@@ -18,8 +18,8 @@ jobs:
       matrix:
         include:
           - goarch: arm
-          - GOARM: 7
-          - GOOS: linux
+            goarm: 7
+            goos: linux
           
     steps:
     - uses: actions/checkout@v4
@@ -35,4 +35,8 @@ jobs:
       run: go build -v ./...
 
     - name: Test
+      env:
+        GOOS: ${{ matrix.goos }}
+        GOARCH: ${{ matrix.goarch }} 
+        GOARM: ${{ matrix.goarm }} 
       run: go test -v ./...
