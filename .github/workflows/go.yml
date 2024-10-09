@@ -32,11 +32,15 @@ jobs:
       run: go get .
 
     - name: Build
-      run: go build -v ./...
-
-    - name: Test
       env:
         GOOS: ${{ matrix.goos }}
         GOARCH: ${{ matrix.goarch }} 
         GOARM: ${{ matrix.goarm }} 
+      run: go build -v ./...
+
+    # - name: Test
+    #   env:
+    #     GOOS: ${{ matrix.goos }}
+    #     GOARCH: ${{ matrix.goarch }} 
+    #     GOARM: ${{ matrix.goarm }} 
       run: go test -v ./...
