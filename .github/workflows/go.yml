@@ -9,10 +9,18 @@ on:
   pull_request:
     branches: [ "main3.5.6" ]
 
+      
 jobs:
 
   build-armv7:
-    runs-on: armv7
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - goarch: arm
+          - GOARM: 7
+          - GOOS: linux
+          
     steps:
     - uses: actions/checkout@v4
 
